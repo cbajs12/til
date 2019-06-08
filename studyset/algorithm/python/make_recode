@@ -1,0 +1,92 @@
+import random
+
+
+def print_num(count):
+    num_set = set()
+
+    for i in range(count):
+        random_num = random.randrange(100000)
+        # print(random_num)
+        if len(num_set) == 0:               # if set is empty, just put the data in set
+            num_set.add(random_num)
+            print(make_recode(random_num))
+            continue
+
+        while random_num in num_set:            # check duplicated data with number set
+            # print(random_num)
+            random_num = random.randrange(100000)
+            # print(random_num)
+
+        num_set.add(random_num)
+        # print(num_set)
+        print(make_recode(random_num))
+
+
+def make_recode(number):
+    prefix = "NT"
+    random_score = random.randrange(101)
+    random_score = str(random_score)
+    result = str(number)
+
+    if len(result) == 5:                    # Produce the number string as it's length
+        result = result
+    elif len(result) == 4:
+        result = '0' + result
+    elif len(result) == 3:
+        result = '00' + result
+    elif len(result) == 2:
+        result = '000' + result
+    else:
+        result = '0000' + result
+
+    result = prefix + result + " " + random_score
+    return result
+
+if __name__ == "__main__":
+    r1 = input()
+
+    n = 0
+
+    try:                                    # if value is string, occur error
+        n = int(r1)
+    except ValueError as va:
+        print("Please enter an integer")
+        exit()
+
+    if n > 99999 or n < 0:
+        print("Input value can not be under 0 or above 100")
+        exit()
+
+    print_num(n)
+
+    # if number > 9999:
+    #     result = prefix + result + " " + random_score
+    #     return result
+    # elif number > 999:
+    #     result = prefix + '0' + result + " " + random_score
+    #     return result
+    # elif number > 99:
+    #     result = prefix + '00' + result + " " + random_score
+    #     return result
+    # elif number > 9:
+    #     result = prefix + '000' + result + " " + random_score
+    #     return result
+    # else:
+    #     result = prefix + '0000' + result + " " + random_score
+    #     return result
+
+    # if len(result) == 5:
+    #     result = prefix + result + " " + random_score
+    #     return result
+    # elif len(result) == 4:
+    #     result = prefix + '0' + result + " " + random_score
+    #     return result
+    # elif len(result) == 3:
+    #     result = prefix + '00' + result + " " + random_score
+    #     return result
+    # elif len(result) == 2:
+    #     result = prefix + '000' + result + " " + random_score
+    #     return result
+    # else:
+    #     result = prefix + '0000' + result + " " + random_score
+    #     return result

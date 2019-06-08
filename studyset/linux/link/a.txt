@@ -1,0 +1,4 @@
+link link.c link.2
+cat linkc
+cat link2
+./unlink link2
